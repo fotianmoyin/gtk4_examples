@@ -3,10 +3,13 @@ project(gtk4_examples C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(gtk4_examples example-4.c)
+add_executable(gtk4_examples example-3.c)
 
 FIND_PACKAGE(PkgConfig REQUIRED)
 PKG_CHECK_MODULES(GTK4 REQUIRED gtk4)
 INCLUDE_DIRECTORIES(${GTK4_INCLUDE_DIRS})
 LINK_DIRECTORIES(${GTK4_LIBRARY_DIRS})
 TARGET_LINK_LIBRARIES(gtk4_examples ${GTK4_LIBRARIES})
+
+file(GLOB UI_Files "uis/*")
+file(COPY ${UI_Files} DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/uis")
